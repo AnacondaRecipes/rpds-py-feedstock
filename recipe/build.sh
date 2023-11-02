@@ -18,6 +18,11 @@ rustc --version
 
 mkdir -p "${CARGO_HOME}"
 
+if [[ ${target_platform} =~ .*linux-s390x.* ]]; then
+    ln -s $CC ./cc
+    export PATH=$PWD:$PATH
+fi
+
 "${PYTHON}" -m pip install -vv . --no-deps --no-build-isolation
 
 cargo-bundle-licenses \
