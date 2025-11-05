@@ -1,28 +1,26 @@
-{% set version = "0.22.3" %}
-
+{% set version = "0.28.0" %}
 package:
   name: rpds-py
   version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/r/rpds-py/rpds_py-{{ version }}.tar.gz
-  sha256: e32fee8ab45d3c2db6da19a5323bc3362237c8b653c70194414b892fd06a080d
+  sha256: abd4df20485a0983e2ca334a216249b6186d6e3c1627e106651943dbdb791aea
 
 build:
   number: 0
-  skip: true  # [py<39]
-  missing_dso_whitelist:
-    - '$RPATH/ld64.so.1'  # [s390x]
+  skip: true  # [py<310]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - {{ compiler('rust') }}
     - cargo-bundle-licenses
     - python                                 # [build_platform != target_platform]
-    - maturin >=1.0,<2.0                     # [build_platform != target_platform]
+    - maturin >=1.9,<2.0                     # [build_platform != target_platform]
   host:
-    - maturin >=1.2,<2.0
+    - maturin >=1.9,<2.0
     - pip
     - python
   run:
