@@ -9,14 +9,12 @@ source:
   sha256: e32fee8ab45d3c2db6da19a5323bc3362237c8b653c70194414b892fd06a080d
 
 build:
-  number: 0
-  skip: true  # [py<39]
-  missing_dso_whitelist:
-    - '$RPATH/ld64.so.1'  # [s390x]
+  number: 1
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - {{ compiler('rust') }}
     - cargo-bundle-licenses
     - python                                 # [build_platform != target_platform]
