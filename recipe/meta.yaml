@@ -1,11 +1,12 @@
-{% set version = "0.28.0" %}
+{% set version = "2026.6.3" %}
+
 package:
   name: rpds-py
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/r/rpds-py/rpds_py-{{ version }}.tar.gz
-  sha256: abd4df20485a0983e2ca334a216249b6186d6e3c1627e106651943dbdb791aea
+  url: https://pypi.org/packages/source/r/rpds-py/rpds_py-{{ version }}.tar.gz
+  sha256: 1cebd1337c242e4ec2293e541f712b2da849b29f48f0c293684b71c0632625d4
 
 build:
   number: 0
@@ -17,8 +18,8 @@ requirements:
     - {{ stdlib('c') }}
     - {{ compiler('rust') }}
     - cargo-bundle-licenses
-    - python                                 # [build_platform != target_platform]
-    - maturin >=1.9,<2.0                     # [build_platform != target_platform]
+    - python  # [build_platform != target_platform]
+    - maturin >=1.9,<2.0  # [build_platform != target_platform]
   host:
     - maturin >=1.9,<2.0
     - pip
