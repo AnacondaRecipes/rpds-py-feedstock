@@ -1,3 +1,4 @@
-build_env_vars:
-  ANACONDA_ROCKET_ENABLE_PY314 : yes
-
+# win-arm64 platform gap fill; skip already-released subdirs (PKG-17331)
+build_parameters:
+  - "--suppress-variables"
+  - "--skip-existing"
